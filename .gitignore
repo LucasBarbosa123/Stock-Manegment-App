@@ -24,4 +24,3 @@ pnpm-debug.log*
 
 #dbconnector
 dbconnector.js
-./server/dbconnector.js

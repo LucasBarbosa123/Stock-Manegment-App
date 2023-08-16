@@ -1,99 +1,81 @@
 <template>
   <div class="content-container">
     <div class="add-container">
-        <input type="text" id="pNome" placeholder="Nome">
-        <input type="text" id="pSome" placeholder="Apelido">
-        <input type="text" id="email" placeholder="Email">
-        <input type="text" id="emailRep" placeholder="Confirmar email">
+        <h1 class="title">Inserir Pessoa</h1>
+        <input type="text" id="pNome" placeholder="Nome" @keyup="wrongConf">
+        <input type="text" id="sNome" placeholder="Apelido" @keyup="wrongConf">
+        <input type="text" id="email" placeholder="Email" @keyup="wrongConf">
+        <div>
+          <input type="text" id="emailRep" placeholder="Confirmar email" @keyup="wrongConf">
+          <p v-if="repError">Confira este campo novamente</p>
+        </div>
         
         <div class="acessos-container">
           <div>
-            <input type="checkbox" name="Stock" id="">
+            <input type="checkbox" name="Stock" id="" checked>
+            <span class="check-marck"></span>
             <label for="Stock">Stock</label>
           </div>
           <div>
             <input type="checkbox" name="Pessoas" id="">
+            <span class="check-marck"></span>
             <label for="Stock">Pessoas</label>
           </div>
         </div>
 
-        <button>
-          <p>
-            Adicionar
-          </p>
+        <button id="addPrsn" @click="tryAddPrsn">
+          <p>Adicionar</p>
         </button>
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import Warnings from '../Warnings'
 
+export default {
+  data(){
+    return{
+      repError: false
+    }
+  },
+  methods: {
+    tryAddPrsn(){
+      let pNome = document.getElementById('pNome').value
+      let sNome = document.getElementById('sNome').value
+      let email = document.getElementById('email').value
+      let emailRep = document.getElementById('emailRep').value
+
+      if(pNome == '' || sNome == '' || email == '' || emailRep == ''){
+        let msg = 'Todos os campos de texto precisam estar preenchidos'
+        Warnings.badWarning(msg)
+      }else if(email != emailRep){
+        let msg = 'O campo confirmar email está diferente do campo email'
+        Warnings.badWarning(msg)
+      }else{
+        console.log('os campos estao preenchidos corretamente')
+      }
+    },
+    wrongConf(e){
+      let email = document.getElementById('email').value
+      let emailRep = document.getElementById('emailRep').value
+
+      if(email != emailRep){
+        this.repError = true
+      }else{
+        this.repError = false
+      }
+
+      if(e.code == 'Enter'){
+        document.getElementById('addPrsn').click()
+      }
+    }
+  }
 }
 </script>
 
 <style lang="scss">
 @import "../assets/scss/colors";
+@import "../assets/scss/add-forms";
 
-.add-container{
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-    margin-left: 33.5vw;
-    margin-top: 12vh;
-    background-color: $white;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    border: 0.5vh solid $grey;
-    border-radius: 1vh;
-    padding: 1.5vw;
-    
-    & > input{
-      margin-bottom: 3vh;
-      height: 3.5vh;
-      width: 18vw;
-      border-radius: 1vh;
-      font-size: 2.25vh;
-      padding-left: 0.5vw;
-      padding-right: 0.5vw;
-    }
-
-    & > .acessos-container{
-      margin-bottom: 3vh;
-      display: flex;
-      justify-content: space-between;
-
-      & > div{
-        & > input{
-          height: 3.5vh;
-          width: 2vw;
-        }
-
-        & > label{
-          margin-bottom: max;
-        }
-      }
-    }
-
-    & > button{
-        background-color: $positive-color;
-        border-color: $light-grey;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 20px;
-        border-radius: 1vh;
-        font-size: 1.1vw;
-        cursor: pointer;
-        width: 10vw;
-        margin-left: auto;
-        margin-right: 0.5vw;
-        
-        & > p{
-            padding: 1vh;
-            margin: 0;
-            color: $dark-grey;
-
-            &:hover{
-                color: $white;
-            }
-        }                    
-    }
-}
 </style>
