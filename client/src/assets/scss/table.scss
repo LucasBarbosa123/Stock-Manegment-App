@@ -1,0 +1,79 @@
+table{
+    margin: auto;
+    border-collapse: collapse;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+    .table-head{
+        font-size: 2.5vh;
+        background-color: mix($other-color, mix($other-color, $negative-color));
+        color: $white;
+    }
+
+    & > .table-body > td{
+        height: 6vh;
+        border: 0.25vh solid $light-grey;
+
+        & > p{
+            margin: 0;
+        }
+
+        & > .utility-btts{
+
+            & > button{
+                margin: 1vh;
+                background-color: $positive-color;
+                border-color: $light-grey;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 20px;
+                border-radius: 1vh;
+                font-size: 1.1vw;
+                cursor: pointer;;
+
+                & > i{
+                    padding: 0.5vh;
+                    margin: 0;
+                    color: $dark-grey;
+
+                    &:hover{
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    & > * > th{
+        height: 6vh;
+        border: 0.25vh solid mix($other-color, mix($other-color, $negative-color));
+    }
+}
+
+.serch-container{
+    margin-top: 10vh;
+    margin-left: 63vw;
+    margin-bottom: 2.5vh;
+    width: 15vw;
+    height: 3.25vh;
+    border-radius: 0.6vh;
+    background-color: $positive-color;
+    border: 0.3vh solid $black;
+
+    & > input{
+        margin-left: 0.75vw;
+        width: 11vw;
+        height: 3vh;
+        border-radius: 0.5vh;
+        border: 0;
+        padding-left: 0.5vw;
+        padding-right: 0.5vw;
+
+        &:focus-visible{
+            outline: 0;
+        }
+    }
+
+    & > i{
+        height: 0.1vh;
+        margin-top: 1.7vh;
+        margin-left: 0.75vw;
+    }
+}

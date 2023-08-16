@@ -1,0 +1,89 @@
+@import "./colors";
+
+.bad-warning{
+    position: relative;
+    z-index: 1;
+    width: 25vw;
+    height: 10vh;
+    border-radius: 5px;
+    background-color: $negative-color;
+    display: flex;
+    flex-direction: column;
+    color: $white;
+    margin: 1vh;
+
+    & > .info-container{
+        display: flex;
+        height: 9vh;
+
+        & > .icon-container{
+            width: 5vw;
+            margin-right: 2vw;
+    
+            & > i{
+                left: 1vw;
+                top: 1.8vh;
+                position: relative;
+            }        
+        }
+    
+        & > .text-container{
+            width: 18vw;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    & > .kill-div{
+        width: 25vw;
+        height: 1vh;
+        background-color: mix($negative-color, white);
+        border-radius: 0 0 5px 5px;
+        transition: 4s;
+        transition-timing-function: linear;
+    }
+}
+
+.good-warning{
+    position: relative;
+    z-index: 1;
+    width: 25vw;
+    height: 10vh;
+    border-radius: 5px;
+    background-color: $positive-color;
+    display: flex;
+    flex-direction: column;
+    color: $white;
+    margin: 1vh;
+
+    & > .info-container{
+        display: flex;
+        height: 9vh;
+
+        & > .icon-container{
+            width: 5vw;
+            margin-right: 2vw;
+    
+            & > i{
+                left: 1vw;
+                top: 1.8vh;
+                position: relative;
+            }        
+        }
+    
+        & > .text-container{
+            width: 18vw;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    & > .kill-div{
+        width: 25vw;
+        height: 1vh;
+        background-color: mix($positive-color, white);
+        border-radius: 0 0 5px 5px;
+        transition: 4s;
+        transition-timing-function: linear;
+    }
+}

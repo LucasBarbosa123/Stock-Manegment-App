@@ -1,0 +1,58 @@
+.content-container{    
+
+    & > div{
+        display: flex;
+
+        .opt-card{
+            height: 45vh;
+            width: 15vw;
+            background-color: $white;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            border: 0.5vh solid $grey;
+            border-radius: 1vh;
+            margin: 5vh 5vw 5vh 5vw;
+            margin-left: 10vw;
+
+            .opt-icon{
+                margin-top: 6vh;
+
+                & > i{
+                    color: $grey;
+                    padding-left: 1vw;
+                }
+            }
+
+            .opt-text{
+                color: $dark-grey;
+                margin-top: 6vh;
+
+                & > p{
+                    font-size: 1.2vw;
+                }
+            }
+
+            .opt-btt{
+                margin-top: 8vh;
+
+                & > button{
+                    background-color: $positive-color;
+                    border-color: $light-grey;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 20px;
+                    border-radius: 1vh;
+                    font-size: 1.1vw;
+                    cursor: pointer;
+                    
+                    & > p{
+                        padding: 1vh;
+                        margin: 0;
+                        color: $dark-grey;
+
+                        &:hover{
+                            color: $white;
+                        }
+                    }                    
+                }
+            }
+        }
+    }
+}

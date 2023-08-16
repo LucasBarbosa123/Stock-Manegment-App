@@ -1,0 +1,72 @@
+.confirm-del-bg{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: $fade-black;
+    
+    .confirm-del{
+        display: flex;
+        flex-direction: column;        
+        background-color: $white;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        border: 0.5vh solid $grey;
+        border-radius: 1vh;
+        height: 25vh;
+        width: 25vw;
+        margin-left: 37.5vw;
+        margin-top: 37.5vh;
+
+        & > p{
+            font-size: 2.7vh;
+        }
+
+        & > input{
+            margin: 5.7vh;
+            margin-top: 1.5vh;
+            margin-bottom: 3vh;
+            height: 3.5vh;
+            width: 18vw;
+            border-radius: 1vh;
+            font-size: 3vh;
+            padding-left: 0.5vw;
+            padding-right: 0.5vw;
+        }
+
+        & > div > button{
+            margin-left: 1vw;
+            margin-right: 1vw;            
+            border-color: $light-grey;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 20px;
+            border-radius: 1vh;
+            font-size: 1.1vw;
+            cursor: pointer;
+            
+            & > p{
+                padding: 1vh;
+                margin: 0;                
+                
+                &:hover{
+                    color: $white;
+                }
+            }
+        }
+
+        & > div > .positive-btt{
+            background-color: $positive-color;
+
+            & > p{
+                color: $dark-grey;
+            }
+        }
+
+        & > div > .negative-btt{
+            background-color: $negative-color;
+
+            & > p{
+                color: $dark-grey;
+            }
+        }
+    }
+}
