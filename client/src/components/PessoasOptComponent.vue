@@ -35,7 +35,7 @@
                 <p>Editar conta</p>                
             </div>
             <div class="opt-btt">
-                <button id="pessoasEdt">
+                <button id="pessoasEdt" @click="goPplEdt">
                     <p>Editar</p>
                 </button>
             </div>
@@ -67,6 +67,9 @@ export default {
         },
         goPplAdd(){
             this.$router.push({name: 'pessoasadd', params: {id: this.user}})
+        },
+        goPplEdt(){
+            this.$router.push({name: 'pessoasedt', params: {id: this.user}})
         }
     }
 }

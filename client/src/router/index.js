@@ -5,6 +5,7 @@ import Stock from '../views/Stock.vue'
 import Pessoas from '../views/Pessoas.vue'
 import PessoasLst from '../views/PessoasLst.vue'
 import PessoasAdd from '../views/PessoasAdd.vue'
+import PessoasEdt from '../views/PessoasEdt.vue'
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: '/pessoas/add/:id',
     name: 'pessoasadd',
     component: PessoasAdd
+  },
+  {
+    path: '/pessoas/edt/:id',
+    name: 'pessoasedt',
+    component: PessoasEdt
   },
   {
     path: '/login',
