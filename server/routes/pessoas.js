@@ -15,7 +15,17 @@ router.get('/lst', async (req, res)=>{
 router.delete('/:id', async (req, res)=>{
     const logins = await DbConnector.loadLogins()
     await logins.deleteOne({_id: new mongodb.ObjectId(req.params.id)})
-    res.send(200).send()
+    res.status(200).send()
+})
+
+//update acessos of an acount
+router.post('/edt', async (req, res)=>{
+    let acessos = req.body.acessos
+
+    const logins = await DbConnector.loadLogins()
+    await logins.updateOne({_id: new mongodb.ObjectId(req.body.id)}, {$set: {Acessos: req.body.acessos}})
+
+    res.status(200).send()
 })
 
 module.exports = router

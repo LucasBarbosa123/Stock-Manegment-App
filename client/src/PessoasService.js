@@ -23,7 +23,17 @@ class PessoasService {
 
     static deleteUser(id){
       return axios.delete(url+'/'+id)
-  }
+    }
+
+    static updateUser(id, acessos){
+
+      let postData = {
+        id: id,
+        acessos: acessos
+      }
+
+      return axios.post(url+'/edt', postData)
+    }
 }
 
 export default PessoasService

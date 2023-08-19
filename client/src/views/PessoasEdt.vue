@@ -1,34 +1,19 @@
 <template>
   <div>
     <MenuComponent :user="$route.params.id"/>
-    <div class="content-container edt">
-      <PessoasEdtLstComponent @selected="passEdtInfo"/>
-      <PessoasEdtInptComponent :newEdtUser="edtUser"/>
-    </div>
+    <PessoasEdtComponent/>
   </div>
 </template>
 
 <script>
 import MenuComponent from '../components/MenuComponent.vue'
-import PessoasEdtInptComponent from '../components/PessoasEdtInptComponent.vue'
-import PessoasEdtLstComponent from '../components/PessoasEdtLstComponent.vue'
+import PessoasEdtComponent from '../components/PessoasEdtComponent.vue'
 
 export default {  
   name: 'pessoaslst',
   components: {
     MenuComponent,
-    PessoasEdtInptComponent,
-    PessoasEdtLstComponent
-  },
-  data(){
-    return{
-      edtUser: ''
-    }
-  },
-  methods: {
-    passEdtInfo(userId){
-      this.edtUser = userId
-    }
+    PessoasEdtComponent
   }
 }
 </script>
