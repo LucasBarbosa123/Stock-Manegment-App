@@ -1,7 +1,7 @@
 <template>
   <div class="content-container">
     <div class="add-container">
-        <h1 class="title">Inserir Pessoa</h1>
+        <h1 class="title">Adicionar Conta</h1>
         <input type="text" id="pNome" placeholder="Nome" @keyup="wrongConf">
         <input type="text" id="sNome" placeholder="Apelido" @keyup="wrongConf">
         <input type="text" id="email" placeholder="Email" @keyup="wrongConf">

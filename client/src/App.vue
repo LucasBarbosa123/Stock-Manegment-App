@@ -34,6 +34,7 @@ body {
 .content-container{
   padding: 5vh;
   padding-top: 10vh;
+  min-height: 85vh;
 }
 
 #warnings-container{
