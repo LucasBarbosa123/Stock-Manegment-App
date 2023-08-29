@@ -34,6 +34,16 @@ class PessoasService {
 
       return axios.post(url+'/edt', postData)
     }
+
+    static async getMyAccount(id){
+      try{
+        const res = await axios.get(url+'/getmyaccount/'+ id)
+        const data = res.data
+        return data
+      }catch(err){
+        return Promise.reject(err)
+      }
+    }
 }
 
 export default PessoasService

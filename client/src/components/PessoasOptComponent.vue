@@ -50,7 +50,7 @@
                 <p>Minha Conta</p>                
             </div>
             <div class="opt-btt">
-                <button id="myAcount">
+                <button id="myAcount" @click="goActEdt">
                     <p>Ir</p>
                 </button>
             </div>
@@ -70,6 +70,9 @@ export default {
         },
         goPplEdt(){
             this.$router.push({name: 'pessoasedt', params: {id: this.user, edtId: ' '}})
+        },
+        goActEdt(){
+            this.$router.push({name: 'accountedt', params: {id: this.user}})
         }
     }
 }

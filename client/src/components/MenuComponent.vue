@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="header-icon">
-            <i class="fa-solid fa-circle-user fa-2x"></i>
+            <i class="fa-solid fa-circle-user fa-2x" @click="goTo('accountedt')"></i>
         </div>
     </div>
 </template>

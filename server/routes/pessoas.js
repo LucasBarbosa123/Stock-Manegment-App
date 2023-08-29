@@ -28,4 +28,10 @@ router.post('/edt', async (req, res)=>{
     res.status(200).send()
 })
 
+//get all information about the loged user
+router.get('/getmyaccount/:id', async (req, res)=>{
+    const logins = await DbConnector.loadLogins()
+    res.send(await logins.findOne({_id: new mongodb.ObjectId(req.params.id)}, {projection: {_id: 0}}))
+})
+
 module.exports = router

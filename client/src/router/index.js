@@ -6,6 +6,7 @@ import Pessoas from '../views/Pessoas.vue'
 import PessoasLst from '../views/PessoasLst.vue'
 import PessoasAdd from '../views/PessoasAdd.vue'
 import PessoasEdt from '../views/PessoasEdt.vue'
+import AccountEdt from '../views/AccountEdt.vue'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/pessoas/edt/:id/:edtId',
     name: 'pessoasedt',
     component: PessoasEdt
+  },
+  {
+    path: '/account/edt/:id',
+    name: 'accountedt',
+    component: AccountEdt
   },
   {
     path: '/login',
