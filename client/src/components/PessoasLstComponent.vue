@@ -21,7 +21,7 @@
                 </td>
                 <td>
                     <div class="utility-btts">
-                        <button>
+                        <button @click="toEdtPage(u.id)">
                             <i class="fa-solid fa-pen-nib"></i>
                         </button>
                         <button @click="delConfirmator(u.id)">
@@ -152,6 +152,13 @@ export default {
                         tr[i].style.display = "none";
                     }
                 }       
+            }
+        },
+        toEdtPage(id){
+            if(id == this.user){
+                //to my acount page
+            }else{
+                this.$router.push({name: 'pessoasedt', params: {id: this.user, edtId: id}})
             }
         }
     }

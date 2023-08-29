@@ -49,16 +49,42 @@ import PessoasService from '../PessoasService'
 import Warnings from '../Warnings'
 
 export default {
-    props: ['user'],
+    props: ['edtId', 'user'],
     data(){
+        let fillInputs = (userId)=>{
+            this.allUsers.forEach(edtUser =>{
+                if(edtUser.id == userId){
+                    let pNome = edtUser.nome.split(' ')[0]
+                    let sNome = edtUser.nome.split(' ')[1]
+                    document.getElementById('pNome').value = pNome
+                    document.getElementById('sNome').value = sNome
+
+                    let inputs = document.querySelectorAll('.check-box')
+                    for (let i = 0; i < inputs.length; i++) {
+                      inputs[i].checked = false
+                    }
+
+                    edtUser.acessos.forEach(acesso =>{
+                        document.getElementById('check'+acesso).checked = true
+                    })
+
+                    this.toEdit = edtUser.id
+                }
+            })
+        }
+
         return{
             allUsers: [],
-            toEdit: ''
+            toEdit: '',
+            fillInputs
         }
     },
     async created(){
         try{
           this.allUsers = await PessoasService.getAll()
+          if(this.edtId != ' '){
+            this.fillInputs(this.edtId)
+          }
         }catch(err){
           this.error = err.message
         }
@@ -82,25 +108,12 @@ export default {
             }
         },
         selectToEdt(userId){
-            this.allUsers.forEach(edtUser =>{
-                if(edtUser.id == userId){
-                    let pNome = edtUser.nome.split(' ')[0]
-                    let sNome = edtUser.nome.split(' ')[1]
-                    document.getElementById('pNome').value = pNome
-                    document.getElementById('sNome').value = sNome
-
-                    let inputs = document.querySelectorAll('.check-box')
-                    for (let i = 0; i < inputs.length; i++) {
-                      inputs[i].checked = false
-                    }
-
-                    edtUser.acessos.forEach(acesso =>{
-                        document.getElementById('check'+acesso).checked = true
-                    })
-
-                    this.toEdit = edtUser.id
-                }
-            })
+            if(userId != this.user){
+                this.fillInputs(userId)
+            }else{
+                let msg = 'Esta é a sua conta, vá para a pagina minha conta'
+                Warnings.badWarning(msg)
+            }
         },
         async tryEdtPrsn(userEdt){
             let newAcessos = []

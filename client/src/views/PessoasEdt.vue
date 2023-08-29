@@ -1,7 +1,7 @@
 <template>
   <div>
     <MenuComponent :user="$route.params.id"/>
-    <PessoasEdtComponent/>
+    <PessoasEdtComponent :user="$route.params.id" :edtId="$route.params.edtId"/>
   </div>
 </template>
 

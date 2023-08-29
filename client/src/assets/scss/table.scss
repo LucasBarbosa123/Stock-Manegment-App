@@ -19,7 +19,8 @@ table{
 
         & > .utility-btts{
 
-            & > button{
+            & > button,
+            & > a{
                 margin: 1vh;
                 background-color: $positive-color;
                 border-color: $light-grey;

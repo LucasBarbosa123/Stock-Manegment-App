@@ -69,7 +69,7 @@ export default {
             this.$router.push({name: 'pessoasadd', params: {id: this.user}})
         },
         goPplEdt(){
-            this.$router.push({name: 'pessoasedt', params: {id: this.user}})
+            this.$router.push({name: 'pessoasedt', params: {id: this.user, edtId: ' '}})
         }
     }
 }

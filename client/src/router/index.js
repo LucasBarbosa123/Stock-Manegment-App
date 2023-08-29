@@ -40,7 +40,7 @@ const routes = [
     component: PessoasAdd
   },
   {
-    path: '/pessoas/edt/:id',
+    path: '/pessoas/edt/:id/:edtId',
     name: 'pessoasedt',
     component: PessoasEdt
   },
