@@ -25,6 +25,7 @@ class PessoasService {
       return axios.delete(url+'/'+id)
     }
 
+    //update the accesses of an user
     static updateUser(id, acessos){
 
       let postData = {
@@ -35,6 +36,7 @@ class PessoasService {
       return axios.post(url+'/edt', postData)
     }
 
+    //geting the data from the users account for a profile update
     static async getMyAccount(id){
       try{
         const res = await axios.get(url+'/getmyaccount/'+ id)
@@ -43,6 +45,19 @@ class PessoasService {
       }catch(err){
         return Promise.reject(err)
       }
+    }
+
+    //update users own account
+    static updateMyUser(id, nome, email, pass){
+
+      let postData = {
+        id: id,
+        nome: nome,
+        email: email,
+        pass: pass
+      }
+
+      return axios.post(url+'/edtmyuser', postData)
     }
 }
 

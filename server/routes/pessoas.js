@@ -20,7 +20,6 @@ router.delete('/:id', async (req, res)=>{
 
 //update acessos of an acount
 router.post('/edt', async (req, res)=>{
-    let acessos = req.body.acessos
 
     const logins = await DbConnector.loadLogins()
     await logins.updateOne({_id: new mongodb.ObjectId(req.body.id)}, {$set: {Acessos: req.body.acessos}})
@@ -32,6 +31,16 @@ router.post('/edt', async (req, res)=>{
 router.get('/getmyaccount/:id', async (req, res)=>{
     const logins = await DbConnector.loadLogins()
     res.send(await logins.findOne({_id: new mongodb.ObjectId(req.params.id)}, {projection: {_id: 0}}))
+})
+
+//update users own account
+router.post('/edtmyuser', async (req, res)=>{
+    let acessos = req.body.acessos
+
+    const logins = await DbConnector.loadLogins()
+    await logins.updateOne({_id: new mongodb.ObjectId(req.body.id)}, {$set: {Nome: req.body.nome, Email: req.body.email, Pass: req.body.pass}})
+
+    res.status(200).send()
 })
 
 module.exports = router

@@ -37,34 +37,41 @@
 
 <script>
 import PessoasService from '../PessoasService'
+import Warnings from '../Warnings'
 
 export default {
     props: ['user'],
     data(){
+        
+        let loadMyData = async () =>{
+            try{
+                this.myUser = await PessoasService.getMyAccount(this.user)
+
+                let pNome = this.myUser.Nome.split(' ')[0]
+                let sNome = this.myUser.Nome.split(' ')[1]
+                document.getElementById('pNome').value = pNome
+                document.getElementById('sNome').value = sNome
+
+                document.getElementById('email').value = this.myUser.Email
+                document.getElementById('pass').value = this.myUser.Pass
+
+            }catch(err){
+                console.log(err)
+            } 
+        }
+
         return{
             edtEmail: false,
             edtPass: false,
             myUser: {},
             difEmail: false,
-            difPass: false
+            difPass: false,
+            loadMyData
         }
     },
     async created(){
 
-        try{
-            this.myUser = await PessoasService.getMyAccount(this.user)
-
-            let pNome = this.myUser.Nome.split(' ')[0]
-            let sNome = this.myUser.Nome.split(' ')[1]
-            document.getElementById('pNome').value = pNome
-            document.getElementById('sNome').value = sNome
-
-            document.getElementById('email').value = this.myUser.Email
-            document.getElementById('pass').value = this.myUser.Pass
-
-        }catch(err){
-            console.log(err)
-        }        
+        this.loadMyData()
     },
     methods:{
         editNome(){
@@ -102,6 +109,28 @@ export default {
             }else{
               this.difPass = false
             }
+        },
+        edtMyAccount(){
+            let nome, email, pass
+            
+            if(this.difPass || this.difEmail){
+                let msg = 'Confira os campos assinalados'
+                Warnings.badWarning(msg)
+            }else{
+                nome = document.getElementById('pNome').value + ' ' + document.getElementById('sNome').value
+                email = document.getElementById('email').value
+                pass = document.getElementById('pass').value
+
+                if(email == '' || pass == ''){
+                    let msg = 'Preencha todos os campos'
+                    Warnings.badWarning(msg)
+                }else{
+                    PessoasService.updateMyUser(this.user, nome, email, pass)
+                    location.reload()
+
+                }
+            }
+            
         }
     }
 }
