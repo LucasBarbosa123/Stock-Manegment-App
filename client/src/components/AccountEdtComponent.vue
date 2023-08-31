@@ -53,7 +53,6 @@ export default {
                 document.getElementById('sNome').value = sNome
 
                 document.getElementById('email').value = this.myUser.Email
-                document.getElementById('pass').value = this.myUser.Pass
 
             }catch(err){
                 console.log(err)
@@ -121,7 +120,7 @@ export default {
                 email = document.getElementById('email').value
                 pass = document.getElementById('pass').value
 
-                if(email == '' || pass == ''){
+                if(email == ''){
                     let msg = 'Preencha todos os campos'
                     Warnings.badWarning(msg)
                 }else{

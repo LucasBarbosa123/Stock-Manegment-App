@@ -1,6 +1,8 @@
 const express = require('express')
 const mongodb = require('mongodb')
 const DbConnector = require('../dbconnector')
+const encrypter = require('../encrypter')
+
 
 const router = express.Router()
 
@@ -15,11 +17,9 @@ router.get('/confirmation/:id/:pass', async (req, res)=>{
     const logins = await DbConnector.loadLogins()    
     const fields = {Pass: 1, _id: 0}
     const passW = await logins.findOne({_id: new mongodb.ObjectId(req.params.id)}, {projection: fields})
-    if(req.params.pass == passW.Pass){
-        res.send(true)
-    }else{
-        res.send(false)
-    }
+    const isPassCorrect = await encrypter.comparePass(req.params.pass, passW.Pass)
+
+    res.send(isPassCorrect)
 })
 
 module.exports = router

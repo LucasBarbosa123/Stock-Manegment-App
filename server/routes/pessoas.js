@@ -1,6 +1,7 @@
 const express = require('express')
 const mongodb = require('mongodb')
 const DbConnector = require('../dbconnector')
+const encrypter = require('../encrypter')
 
 const router = express.Router()
 
@@ -30,16 +31,19 @@ router.post('/edt', async (req, res)=>{
 //get all information about the loged user
 router.get('/getmyaccount/:id', async (req, res)=>{
     const logins = await DbConnector.loadLogins()
-    res.send(await logins.findOne({_id: new mongodb.ObjectId(req.params.id)}, {projection: {_id: 0}}))
+    res.send(await logins.findOne({_id: new mongodb.ObjectId(req.params.id)}, {projection: {_id: 0, Pass: 0}}))
 })
 
 //update users own account
 router.post('/edtmyuser', async (req, res)=>{
-    let acessos = req.body.acessos
-
     const logins = await DbConnector.loadLogins()
-    await logins.updateOne({_id: new mongodb.ObjectId(req.body.id)}, {$set: {Nome: req.body.nome, Email: req.body.email, Pass: req.body.pass}})
 
+    if(req.body.pass == ''){
+        await logins.updateOne({_id: new mongodb.ObjectId(req.body.id)}, {$set: {Nome: req.body.nome, Email: req.body.email}})
+    }else{
+        let hashedPass = await encrypter.encrypt(req.body.pass)
+        await logins.updateOne({_id: new mongodb.ObjectId(req.body.id)}, {$set: {Nome: req.body.nome, Email: req.body.email, Pass: hashedPass}})
+    }
     res.status(200).send()
 })
 
