@@ -1,16 +1,19 @@
 <template>
   <div>
     <MenuComponent :user="$route.params.id"/>
+    <StockOpt/>
   </div>
 </template>
 
 <script>
 import MenuComponent from '../components/MenuComponent.vue'
+import StockOpt from '../components/StockOptComponent.vue'
 
 export default {  
   name: 'stock',
   components: {
-    MenuComponent
+    MenuComponent,
+    StockOpt
   }
 }
 </script>

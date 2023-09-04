@@ -7,7 +7,7 @@ class LoginService {
   
     static async tryLogin(nome, pass){
       try{
-        const res = await axios.get(url+'/tryLogin/'+ nome + '/' + pass)
+        const res = await axios.get(url+'/tryLogin/'+ nome + '/' + pass, {withCredentials: true})
         const data = res.data
         return data
       }catch(err){

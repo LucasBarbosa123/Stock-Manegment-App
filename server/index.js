@@ -1,13 +1,23 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 
 const app = express()
 
 //Middleware
 app.use(bodyParser.json())
-app.use(cors())
+
+//so that i could get cookies to the front end
+const corsOptions ={
+    origin:'http://localhost:8080',
+    credentials:true,
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions))
+
+app.use(cookieParser())
 
 const loginPage = require('./routes/login')
 const mainPage = require('./routes/main')
@@ -25,7 +35,7 @@ app.use('/home', homePage)
 
 app.use('/pessoas', pessoasPage)
 
-const port = process.env.PORT || 5000
+const port = 5000
 
 app.listen(port, ()=>{
     console.log('server started on port ' + port)
