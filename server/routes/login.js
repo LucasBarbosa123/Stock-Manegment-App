@@ -1,30 +1,26 @@
 const express = require('express')
 const DbConnector = require('../dbconnector')
 const encrypter = require('../encrypter')
-const uuid = require('uuid')
+const jwt = require('jsonwebtoken')
 
-const sessions = {}
-const expiresAt = 5000
+
+const expiresAt = 1000 * 60 * 60 * 24 * 7 // 1 week
 
 const router = express.Router()
 
 router.get('/tryLogin/:nome/:pass', async (req, res)=>{
     const logins = await DbConnector.loadLogins()
-    const fields = {Nome: 1, Pass: 1}
+    const fields = {Nome: 1, Pass: 1, Acessos: 1}
     const data = await logins.findOne({Nome: req.params.nome}, {projection: fields})
     let userId = ''
     const isPassCorrect = await encrypter.comparePass(req.params.pass, data.Pass)
     
     if(isPassCorrect){
       userId = data._id
-      const sessionToken = uuid.v4()
 
-      sessions[sessionToken] = {
-        expiresAt,
-        userId: userId
-      }
+      const token = jwt.sign(data, DbConnector.tokenSecret())
 
-      res.cookie('session_token', sessionToken, {maxAge: expiresAt})
+      res.cookie('session_token', token, {maxAge: expiresAt})
     }    
         
     res.send(userId)
