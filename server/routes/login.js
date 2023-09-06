@@ -20,7 +20,19 @@ router.get('/tryLogin/:nome/:pass', async (req, res)=>{
 
       const token = jwt.sign(data, DbConnector.tokenSecret())
 
-      res.cookie('session_token', token, {maxAge: expiresAt})
+      req.session.user = {
+        user: data._id,
+        name: 'session_token',
+        token: token
+      }
+      
+      req.session.save(err => {
+        if(err){
+          console.log(err);
+        } else {
+          res.cookie('session_token', token, {maxAge: expiresAt})
+        }
+      })      
     }    
         
     res.send(userId)

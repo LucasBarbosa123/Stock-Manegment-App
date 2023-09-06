@@ -2,8 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
-var session = require('express-session')
-var MongoDBStore = require('connect-mongodb-session')(session)
+const session = require('express-session')
+const MongoDBStore = require('connect-mongo')(session)
 
 const app = express()
 
@@ -23,20 +23,23 @@ app.use(cookieParser())
 const dbconnector = require('./dbconnector')
 
 let store = new MongoDBStore({
-  uri: dbconnector.connectionString(),
+  url: dbconnector.sessionsConnectionString(),
+  ttl: 1000 * 60 * 60 * 24 * 7, // 1 week
   databaseName: 'StockVilatoldos',
-  collection: 'Sessions'
+  collection: 'Sessions',
+  autoRemove: 'native'
 })
 
 app.use(session({
   secret: 'This is a secret',
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
-  },
   store: store,    
   resave: false,
   saveUninitialized: false
 }))
+
+store.on('error', function (error) {
+  console.error('MongoDBStore error:', error)
+})
 
 const loginPage = require('./routes/login')
 const mainPage = require('./routes/main')
