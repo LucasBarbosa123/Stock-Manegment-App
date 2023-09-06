@@ -22,4 +22,23 @@ router.get('/confirmation/:id/:pass', async (req, res)=>{
     res.send(isPassCorrect)
 })
 
+router.get('/get-cookies', (req, res, next) => {
+    let cookies = []
+
+    const cookiesArray = req.headers.cookie.split(';')
+
+    cookiesArray.forEach((cookie) => {
+        const [key, value] = cookie.trim().split('=')
+
+        let cookieObj = {
+            Nome: key,
+            Value: value
+        }
+        
+        cookies.push(cookieObj)
+    })
+
+    res.json(cookies)
+})
+
 module.exports = router

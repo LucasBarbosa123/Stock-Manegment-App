@@ -13,29 +13,34 @@ router.get('/tryLogin/:nome/:pass', async (req, res)=>{
     const fields = {Nome: 1, Pass: 1, Acessos: 1}
     const data = await logins.findOne({Nome: req.params.nome}, {projection: fields})
     let userId = ''
-    const isPassCorrect = await encrypter.comparePass(req.params.pass, data.Pass)
+    if(data){
+      const isPassCorrect = await encrypter.comparePass(req.params.pass, data.Pass)
     
-    if(isPassCorrect){
-      userId = data._id
+      if(isPassCorrect){
+        userId = data._id
 
-      const token = jwt.sign(data, DbConnector.tokenSecret())
+        const token = jwt.sign(data, DbConnector.tokenSecret())
 
-      req.session.user = {
-        user: data._id,
-        name: 'session_token',
-        token: token
-      }
-      
-      req.session.save(err => {
-        if(err){
-          console.log(err);
-        } else {
-          res.cookie('session_token', token, {maxAge: expiresAt})
+        req.session.user = {
+          user: data._id,
+          name: 'session_token',
+          token: token
         }
-      })      
-    }    
-        
-    res.send(userId)
+
+        req.session.save(err => {
+          if(err){
+            console.log(err);
+          } else {
+            res.cookie('session_token', token, {maxAge: expiresAt})
+            res.send(userId)
+          }
+        })      
+      }else{
+        res.send(userId)
+      }
+    }else{
+      res.send(userId)
+    }
 })
 
 module.exports = router

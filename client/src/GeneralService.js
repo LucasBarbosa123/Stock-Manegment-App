@@ -24,6 +24,12 @@ class GeneralService {
       return Promise.reject(err)
     }
   }
+
+  static async getCookies(){
+    const res = await axios.get(url+'get-cookies')
+    console.log(res)
+    return '1'
+  }
 }
 
 export default GeneralService

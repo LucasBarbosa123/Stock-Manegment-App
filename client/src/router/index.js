@@ -8,6 +8,7 @@ import PessoasAdd from '../views/PessoasAdd.vue'
 import PessoasEdt from '../views/PessoasEdt.vue'
 import AccountEdt from '../views/AccountEdt.vue'
 
+
 const routes = [
   {
     //because if
