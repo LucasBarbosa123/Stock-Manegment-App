@@ -37,15 +37,15 @@
 
 <script>
 import PessoasService from '../PessoasService'
+import GeneralService from '../GeneralService'
 import Warnings from '../Warnings'
 
 export default {
-    props: ['user'],
     data(){
         
         let loadMyData = async () =>{
             try{
-                this.myUser = await PessoasService.getMyAccount(this.user)
+                this.myUser = await PessoasService.getMyAccount(this.sessionToken.user.user)
 
                 let pNome = this.myUser.Nome.split(' ')[0]
                 let sNome = this.myUser.Nome.split(' ')[1]
@@ -65,11 +65,12 @@ export default {
             myUser: {},
             difEmail: false,
             difPass: false,
-            loadMyData
+            loadMyData,
+            sessionToken: ''
         }
     },
     async created(){
-
+        this.sessionToken = await GeneralService.getSession()
         this.loadMyData()
     },
     methods:{
@@ -124,7 +125,7 @@ export default {
                     let msg = 'Preencha todos os campos'
                     Warnings.badWarning(msg)
                 }else{
-                    PessoasService.updateMyUser(this.user, nome, email, pass)
+                    PessoasService.updateMyUser(this.sessionToken.user.user, nome, email, pass)
                     location.reload()
 
                 }

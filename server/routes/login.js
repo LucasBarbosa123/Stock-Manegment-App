@@ -31,7 +31,7 @@ router.get('/tryLogin/:nome/:pass', async (req, res)=>{
           if(err){
             console.log(err);
           } else {
-            res.cookie('session_token', token, {maxAge: expiresAt})
+            res.cookie('session_token', token, {originalMaxAge: expiresAt})
             res.send(userId)
           }
         })      

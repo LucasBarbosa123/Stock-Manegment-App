@@ -7,54 +7,71 @@ import PessoasLst from '../views/PessoasLst.vue'
 import PessoasAdd from '../views/PessoasAdd.vue'
 import PessoasEdt from '../views/PessoasEdt.vue'
 import AccountEdt from '../views/AccountEdt.vue'
+import GeneralService from '../GeneralService'
+
+async function sessionChecker(target){
+
+  try{
+    const sessionToken = await GeneralService.getSession()
+
+    if(sessionToken){
+      return target     
+    }
+
+    return Login
+  }catch(err){
+    console.log(err)
+
+    return Login
+  }  
+}
 
 
 const routes = [
   {
-    //because if
     path: '/',
     name: 'url',
-    component: Login
+    component: sessionChecker(Home)
   },
   {
-    path: '/home/:id',
+    path: '/home/',
     name: 'home',
-    component: Home
+    component: sessionChecker(Home)
   },
   {
-    path: '/stock/:id',
+    path: '/stock/',
     name: 'stock',
-    component: Stock
+    component: sessionChecker(Stock)
   },
   {
-    path: '/pessoas/:id',
+    path: '/pessoas/',
     name: 'pessoas',
-    component: Pessoas
+    component: sessionChecker(Pessoas)
   },
   {
-    path: '/pessoas/lst/:id',
+    path: '/pessoas/lst/',
     name: 'pessoaslst',
-    component: PessoasLst
+    component: sessionChecker(PessoasLst)
   },
   {
-    path: '/pessoas/add/:id',
+    path: '/pessoas/add/',
     name: 'pessoasadd',
-    component: PessoasAdd
+    component: sessionChecker(PessoasAdd)
   },
   {
-    path: '/pessoas/edt/:id/:edtId',
+    path: '/pessoas/edt/:edtId',
     name: 'pessoasedt',
-    component: PessoasEdt
+    component: sessionChecker(PessoasEdt)
   },
   {
-    path: '/account/edt/:id',
+    path: '/account/edt/',
     name: 'accountedt',
-    component: AccountEdt
+    component: sessionChecker(AccountEdt)
   },
   {
     path: '/login',
     name: 'login',
-    component: Login    
+    component: sessionChecker(Login)    
   }
 ]
 

@@ -1,5 +1,7 @@
 import axios from "axios"
 
+axios.defaults.withCredentials = true
+
 //para funcionar em maquinas exteriores ao host é preciso estar escrito o ip em vez de localhost
 const url = 'http://localhost:5000/general'
 
@@ -25,10 +27,10 @@ class GeneralService {
     }
   }
 
-  static async getCookies(){
-    const res = await axios.get(url+'get-cookies')
-    console.log(res)
-    return '1'
+  static async getSession(){
+    const res = await axios.get(url+'/get-session')
+    const data = res.data
+    return data
   }
 }
 

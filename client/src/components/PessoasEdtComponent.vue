@@ -46,10 +46,11 @@
 
 <script>
 import PessoasService from '../PessoasService'
+import GeneralService from '../GeneralService'
 import Warnings from '../Warnings'
 
 export default {
-    props: ['edtId', 'user'],
+    props: ['edtId'],
     data(){
         let fillInputs = (userId)=>{
             this.allUsers.forEach(edtUser =>{
@@ -76,10 +77,13 @@ export default {
         return{
             allUsers: [],
             toEdit: '',
-            fillInputs
+            fillInputs,
+            sessionToken: ''
         }
     },
     async created(){
+        this.sessionToken = await GeneralService.getSession()
+
         try{
           this.allUsers = await PessoasService.getAll()
           if(this.edtId != ' '){
@@ -108,7 +112,7 @@ export default {
             }
         },
         selectToEdt(userId){
-            if(userId != this.user){
+            if(userId != this.sessionToken.user.user){
                 this.fillInputs(userId)
             }else{
                 let msg = 'Esta é a sua conta, vá para a pagina minha conta'

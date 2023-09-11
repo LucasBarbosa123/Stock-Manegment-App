@@ -16,9 +16,9 @@
 
 <script>
 import HomeService from '../HomeService'
+import GeneralService from '../GeneralService'
 
 export default {
-    props: ['user'],
     data(){
         return{
             userName: '',
@@ -27,10 +27,12 @@ export default {
         }
     },
     async created(){
-        let logedUser        
+        let sessionToken = await GeneralService.getSession()
+
+        let logedUser
 
         try{
-          logedUser = await HomeService.getUser(this.user)
+          logedUser = await HomeService.getUser(sessionToken.user.user)
           this.userName = logedUser.Nome
           this.acessos = logedUser.Acessos
         }catch(err){
@@ -40,7 +42,7 @@ export default {
     methods: {
         goTo(page){
             let pageTo = page.toLowerCase()
-            this.$router.push({name: pageTo, params: {id: this.user}})
+            this.$router.push({name: pageTo})
         }
     }
 }

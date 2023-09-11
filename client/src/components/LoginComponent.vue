@@ -12,6 +12,7 @@
 
 <script>
 import LoginService from '../LoginService'
+import GeneralService from '../GeneralService'
 import Warnings from '../Warnings'
 
 export default {
@@ -20,6 +21,13 @@ export default {
       logedUser: '',
       error: '',
       waiting: false
+    }
+  },
+  async created(){
+    let sessionToken = await GeneralService.getSession()
+
+    if(sessionToken){
+      this.$router.push({name: 'home'})
     }
   },
   methods:{

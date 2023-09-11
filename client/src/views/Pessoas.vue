@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MenuComponent :user="$route.params.id"/>
+    <MenuComponent/>
     <PessoasOpt/>
   </div>
 </template>

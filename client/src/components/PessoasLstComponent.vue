@@ -59,7 +59,6 @@ import Warnings from '../Warnings'
 import GeneralService from '../GeneralService'
 
 export default {
-    props: ['user'],
     data(){
         let tryDelPerson = async (id, passOwner, pass)=>{
             let confirmation
@@ -94,10 +93,13 @@ export default {
             allUsers: [],
             delForm: false,
             toDel: '',
-            tryDelPerson
+            tryDelPerson,
+            sessionToken:''
         }
     },
     async created(){
+        this.sessionToken = await GeneralService.getSession()
+
         try{
           this.allUsers = await PessoasService.getAll()
         }catch(err){
@@ -125,7 +127,7 @@ export default {
                 console.log('bug stoped')
                 
             }else if(pass != '' ){
-                this.tryDelPerson(this.toDel ,this.user ,pass)
+                this.tryDelPerson(this.toDel ,this.sessionToken.user.user ,pass)
 
             }else{
                 let msg = 'Precisa incerir a sua password'
@@ -155,10 +157,10 @@ export default {
             }
         },
         toEdtPage(id){
-            if(id == this.user){
+            if(id == this.sessionToken.user.user){
                 //to my acount page
             }else{
-                this.$router.push({name: 'pessoasedt', params: {id: this.user, edtId: id}})
+                this.$router.push({name: 'pessoasedt', params: {id: this.sessionToken.user.user, edtId: id}})
             }
         }
     }

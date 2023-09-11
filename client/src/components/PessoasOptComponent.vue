@@ -9,7 +9,7 @@
                 <p>Listar contas</p>                
             </div>
             <div class="opt-btt">
-                <button id="pessoasLst" @click="goPplLst">
+                <button id="pessoasLst" @click="goTo('pessoaslst')">
                     <p>Ver</p>                    
                 </button>
             </div>
@@ -22,7 +22,7 @@
                 <p>Criar nova conta</p>                
             </div>
             <div class="opt-btt">
-                <button id="pessoasAdd" @click="goPplAdd">
+                <button id="pessoasAdd" @click="goTo('pessoasadd')">
                     <p>Adicionar</p>                    
                 </button>
             </div>
@@ -50,7 +50,7 @@
                 <p>Minha Conta</p>                
             </div>
             <div class="opt-btt">
-                <button id="myAcount" @click="goActEdt">
+                <button id="myAcount" @click="goTo('accountedt')">
                     <p>Ir</p>
                 </button>
             </div>
@@ -60,19 +60,24 @@
 </template>
 
 <script>
+import GeneralService from '../GeneralService'
+
 export default {
+    data(){
+        return{
+            sessionToken: ''
+        }
+    },
+    async created(){
+        this.sessionToken = await GeneralService.getSession()
+    },
     methods: {
-        goPplLst(){
-            this.$router.push({name: 'pessoaslst', params: {id: this.user}})
-        },
-        goPplAdd(){
-            this.$router.push({name: 'pessoasadd', params: {id: this.user}})
-        },
         goPplEdt(){
-            this.$router.push({name: 'pessoasedt', params: {id: this.user, edtId: ' '}})
+            this.$router.push({name: 'pessoasedt', params: {edtId: ' '}})
         },
-        goActEdt(){
-            this.$router.push({name: 'accountedt', params: {id: this.user}})
+        goTo(page){
+            let pageTo = page.toLowerCase()
+            this.$router.push({name: pageTo})
         }
     }
 }

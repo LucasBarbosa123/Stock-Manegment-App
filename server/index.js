@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 const corsOptions ={
     origin:'http://localhost:8080',
     credentials:true,
-    optionSuccessStatus:200
+    optionsSuccessStatus:200
 }
 app.use(cors(corsOptions))
 

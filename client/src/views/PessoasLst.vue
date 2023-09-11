@@ -1,7 +1,7 @@
 <template>
   <div>
-    <MenuComponent :user="$route.params.id"/>
-    <PessoasLstComponent :user="$route.params.id"/>
+    <MenuComponent/>
+    <PessoasLstComponent/>
   </div>
 </template>
 
