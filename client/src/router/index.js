@@ -14,7 +14,13 @@ async function sessionChecker(target){
   try{
     const sessionToken = await GeneralService.getSession()
 
-    if(sessionToken){
+    console.log(sessionToken.user)
+    if(sessionToken.user){
+      
+      if(target.name==Login.name){
+        router.push({name: 'home'})
+      }
+
       return target     
     }
 

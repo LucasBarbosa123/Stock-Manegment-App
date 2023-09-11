@@ -24,8 +24,8 @@ export default {
     }
   },
   async created(){
-    let sessionToken = await GeneralService.getSession()
-
+  let sessionToken = await GeneralService.getSessi
+  
     if(sessionToken){
       this.$router.push({name: 'home'})
     }
@@ -62,7 +62,7 @@ export default {
             warning.remove()
           })
   
-          this.$router.push({name: 'home', params: {id: this.logedUser}})        
+          location.reload()
         }else{
           let msg = 'Nome ou Password errada'
           Warnings.badWarning(msg)
