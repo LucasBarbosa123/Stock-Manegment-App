@@ -46,6 +46,7 @@ const mainPage = require('./routes/main')
 const generalPage = require('./routes/general')
 const homePage = require('./routes/home')
 const pessoasPage = require('./routes/pessoas')
+const stock = require('./routes/stock')
 
 app.use('/', mainPage)
 
@@ -56,6 +57,8 @@ app.use('/general', generalPage)
 app.use('/home', homePage)
 
 app.use('/pessoas', pessoasPage)
+
+app.use('/stock', stock)
 
 const port = 5000
 

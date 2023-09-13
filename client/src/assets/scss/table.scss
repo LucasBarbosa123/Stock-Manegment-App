@@ -40,6 +40,10 @@ table{
                 }
             }
         }
+
+        &.empty{
+            background-color: rgba(149, 157, 165, 0.452);
+        }
     }
 
     & > * > th{

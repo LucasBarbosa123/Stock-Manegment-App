@@ -37,42 +37,42 @@ const routes = [
   {
     path: '/',
     name: 'url',
-    component: sessionChecker(Home)
+    component: () => sessionChecker(Home)
   },
   {
     path: '/home/',
     name: 'home',
-    component: sessionChecker(Home)
+    component: () => sessionChecker(Home)
   },
   {
     path: '/stock/',
     name: 'stock',
-    component: sessionChecker(Stock)
+    component: () => sessionChecker(Stock)
   },
   {
     path: '/stock/lst/',
     name: 'stocklst',
-    component: sessionChecker(StockLst)
+    component: () => sessionChecker(StockLst)
   },
   {
     path: '/pessoas/',
     name: 'pessoas',
-    component: sessionChecker(Pessoas)
+    component: () => sessionChecker(Pessoas)
   },
   {
     path: '/pessoas/lst/',
     name: 'pessoaslst',
-    component: sessionChecker(PessoasLst)
+    component: () => sessionChecker(PessoasLst)
   },
   {
     path: '/pessoas/add/',
     name: 'pessoasadd',
-    component: sessionChecker(PessoasAdd)
+    component: () => sessionChecker(PessoasAdd)
   },
   {
     path: '/pessoas/edt/:edtId',
     name: 'pessoasedt',
-    component: sessionChecker(PessoasEdt)
+    component: () => sessionChecker(PessoasEdt)
   },
   {
     path: '/account/edt/',
@@ -80,7 +80,7 @@ const routes = [
     component: sessionChecker(AccountEdt)
   },
   {
-    path: '/login',
+    path: '/login/',
     name: 'login',
     component: sessionChecker(Login)    
   }

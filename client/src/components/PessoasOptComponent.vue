@@ -3,7 +3,7 @@
     <div>
         <div class="opt-card">
             <div class="opt-icon">
-                <i class="fa-solid fa-users fa-5x"></i>
+                <i class="fa-solid fa-users fa-5x" style="padding-left: 0.5vw;"></i>
             </div>
             <div class="opt-text">
                 <p>Listar contas</p>                
@@ -16,7 +16,7 @@
         </div>
         <div class="opt-card">
             <div class="opt-icon">
-                <i class="fa-solid fa-user-plus fa-5x"></i>
+                <i class="fa-solid fa-user-plus fa-5x" style="padding-left: 1vw;"></i>
             </div>
             <div class="opt-text">
                 <p>Criar nova conta</p>                
@@ -29,7 +29,7 @@
         </div>
         <div class="opt-card">
             <div class="opt-icon">
-                <i class="fa-solid fa-user-pen fa-5x"></i>
+                <i class="fa-solid fa-user-pen fa-5x" style="padding-left: 1vw;"></i>
             </div>
             <div class="opt-text">
                 <p>Editar conta</p>                
@@ -44,7 +44,7 @@
     <div>
         <div class="opt-card">
             <div class="opt-icon">
-                <i class="fa-regular fa-circle-user fa-6x" style="padding-left: 0vw"></i>
+                <i class="fa-regular fa-circle-user fa-6x"></i>
             </div>
             <div class="opt-text">
                 <p>Minha Conta</p>                

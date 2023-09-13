@@ -3,7 +3,7 @@
     <div>
         <div class="opt-card">
             <div class="opt-icon">
-                <i class="fa-solid fa-users fa-5x"></i>
+                <i class="fa-solid fa-cubes fa-5x"></i>
             </div>
             <div class="opt-text">
                 <p>Listar Stock</p>
@@ -16,7 +16,7 @@
         </div>
         <div class="opt-card">
             <div class="opt-icon">
-                <i class="fa-solid fa-user-plus fa-5x"></i>
+                <i class="fa-solid fa-circle-plus fa-5x"></i>
             </div>
             <div class="opt-text">
                 <p>Adicionar Tipo de Stock</p>
@@ -29,7 +29,7 @@
         </div>
         <div class="opt-card">
             <div class="opt-icon">
-                <i class="fa-solid fa-user-pen fa-5x"></i>
+                <i class="fa-solid fa-trash-can fa-5x"></i>
             </div>
             <div class="opt-text">
                 <p>Remover Tipo de Stock</p>
@@ -44,7 +44,7 @@
     <div>
         <div class="opt-card">
             <div class="opt-icon">
-                <i class="fa-regular fa-circle-user fa-6x" style="padding-left: 0vw"></i>
+                <i class="fa-solid fa-magnifying-glass-chart fa-6x"></i>
             </div>
             <div class="opt-text">
                 <p>Stock Gasto</p>
@@ -57,13 +57,13 @@
         </div>
         <div class="opt-card">
             <div class="opt-icon">
-                <i class="fa-regular fa-circle-user fa-6x" style="padding-left: 0vw"></i>
+                <i class="fa-solid fa-caret-down fa-6x"></i>
             </div>
             <div class="opt-text">
                 <p>Stock em Falta</p>
             </div>
             <div class="opt-btt">
-                <button id="myAcount">
+                <button id="myAcount1">
                     <p>Ver</p>
                 </button>
             </div>

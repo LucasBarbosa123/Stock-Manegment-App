@@ -167,7 +167,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/scss/colors";
 @import "../assets/scss/table";
 @import "../assets/scss/confirmations";
@@ -177,7 +177,7 @@ table{
     .table-head{        
 
         & > .h-nome{
-            width: 12vw;
+            width: 12vw !important;
         }
 
         & > .h-email{

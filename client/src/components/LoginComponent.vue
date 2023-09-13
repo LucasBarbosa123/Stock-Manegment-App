@@ -117,10 +117,6 @@ export default {
     margin-top: 3.5vh;
   }
 
-  .logFailed{
-    color: $negative-color;
-  }
-
   & > i{
     margin-left: auto;
     margin-right: auto;
