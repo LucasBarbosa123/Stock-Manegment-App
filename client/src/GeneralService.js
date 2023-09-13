@@ -32,6 +32,12 @@ class GeneralService {
     const data = res.data
     return data
   }
+
+  static async getTokenInfo(token){
+    const res = await axios.get(url+'/get-token-info/'+ token)
+    const data = res.data
+    return data
+  }
 }
 
 export default GeneralService

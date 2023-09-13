@@ -2,7 +2,7 @@ const express = require('express')
 const mongodb = require('mongodb')
 const DbConnector = require('../dbconnector')
 const encrypter = require('../encrypter')
-
+const jwt = require('jsonwebtoken')
 
 const router = express.Router()
 
@@ -25,6 +25,11 @@ router.get('/confirmation/:id/:pass', async (req, res)=>{
 router.get('/get-session', (req, res) => {
     let session = req.session
     res.send(session)
+})
+
+router.get('/get-token-info/:token', (req, res) => {
+    const decodedToken = jwt.verify(req.params.token, DbConnector.tokenSecret());
+    res.send(decodedToken)
 })
 
 module.exports = router

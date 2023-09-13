@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Stock from '../views/Stock.vue'
+import StockLst from '../views/StockLst.vue'
 import Pessoas from '../views/Pessoas.vue'
 import PessoasLst from '../views/PessoasLst.vue'
 import PessoasAdd from '../views/PessoasAdd.vue'
@@ -14,11 +15,10 @@ async function sessionChecker(target){
   try{
     const sessionToken = await GeneralService.getSession()
 
-    console.log(sessionToken.user)
     if(sessionToken.user){
       
       if(target.name==Login.name){
-        router.push({name: 'home'})
+        return Home
       }
 
       return target     
@@ -48,6 +48,11 @@ const routes = [
     path: '/stock/',
     name: 'stock',
     component: sessionChecker(Stock)
+  },
+  {
+    path: '/stock/lst/',
+    name: 'stocklst',
+    component: sessionChecker(StockLst)
   },
   {
     path: '/pessoas/',

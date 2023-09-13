@@ -10,7 +10,7 @@ const router = express.Router()
 
 router.get('/tryLogin/:nome/:pass', async (req, res)=>{
     const logins = await DbConnector.loadLogins()
-    const fields = {Nome: 1, Pass: 1, Acessos: 1}
+    const fields = {Nome: 1, Pass: 1, Acessos: 1, UserName:1}
     const data = await logins.findOne({Nome: req.params.nome}, {projection: fields})
     let userId = ''
     if(data){
@@ -18,6 +18,7 @@ router.get('/tryLogin/:nome/:pass', async (req, res)=>{
     
       if(isPassCorrect){
         userId = data._id
+        delete data.Pass
 
         const token = jwt.sign(data, DbConnector.tokenSecret())
 

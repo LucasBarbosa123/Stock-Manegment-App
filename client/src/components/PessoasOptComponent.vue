@@ -10,7 +10,7 @@
             </div>
             <div class="opt-btt">
                 <button id="pessoasLst" @click="goTo('pessoaslst')">
-                    <p>Ver</p>                    
+                    <p>Listar</p>                    
                 </button>
             </div>
         </div>
@@ -23,7 +23,7 @@
             </div>
             <div class="opt-btt">
                 <button id="pessoasAdd" @click="goTo('pessoasadd')">
-                    <p>Adicionar</p>                    
+                    <p>Criar</p>                    
                 </button>
             </div>
         </div>
@@ -51,7 +51,7 @@
             </div>
             <div class="opt-btt">
                 <button id="myAcount" @click="goTo('accountedt')">
-                    <p>Ir</p>
+                    <p>Ver</p>
                 </button>
             </div>
         </div>
@@ -60,17 +60,7 @@
 </template>
 
 <script>
-import GeneralService from '../GeneralService'
-
 export default {
-    data(){
-        return{
-            sessionToken: ''
-        }
-    },
-    async created(){
-        this.sessionToken = await GeneralService.getSession()
-    },
     methods: {
         goPplEdt(){
             this.$router.push({name: 'pessoasedt', params: {edtId: ' '}})

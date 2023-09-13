@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import HomeService from '../HomeService'
 import GeneralService from '../GeneralService'
 
 export default {
@@ -29,15 +28,10 @@ export default {
     async created(){
         let sessionToken = await GeneralService.getSession()
 
-        let logedUser
+        let tokenInfo = await GeneralService.getTokenInfo(sessionToken.user.token)
 
-        try{
-          logedUser = await HomeService.getUser(sessionToken.user.user)
-          this.userName = logedUser.Nome
-          this.acessos = logedUser.Acessos
-        }catch(err){
-          this.error = err.message
-        }
+        this.userName = tokenInfo.Nome
+        this.acessos = tokenInfo.Acessos
     },
     methods: {
         goTo(page){
