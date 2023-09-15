@@ -52,33 +52,45 @@ table{
     }
 }
 
-.serch-container{
+.search-container{
     margin-top: 10vh;
     margin-left: 63vw;
     margin-bottom: 2.5vh;
-    width: 15vw;
-    height: 3.25vh;
-    border-radius: 0.6vh;
-    background-color: $positive-color;
-    border: 0.3vh solid $black;
+    display: flex;
 
-    & > input{
-        margin-left: 0.85vw;
-        width: 11vw;
-        height: 3vh;
-        border-radius: 0.5vh;
-        border: 0;
-        padding-left: 0.5vw;
-        padding-right: 0.5vw;
-
-        &:focus-visible{
-            outline: 0;
+    & > .search-radio{
+        
+        & > label{
+            margin-right: 1vh;
         }
     }
+    
+    & > .search-bar{
+        width: 15vw;
+        height: 3.25vh;
+        border-radius: 0.6vh;
+        background-color: $positive-color;
+        border: 0.3vh solid $black;
+        display: flex;
 
-    & > i{
-        height: 0.1vh;
-        margin-top: 1.7vh;
-        margin-left: 0.75vw;
+        & > input{
+            margin-left: 0.85vw;
+            width: 11vw;
+            height: 3vh;
+            border-radius: 0.5vh;
+            border: 0;
+            padding-left: 0.5vw;
+            padding-right: 0.5vw;
+    
+            &:focus-visible{
+                outline: 0;
+            }
+        }
+    
+        & > i{
+            height: 0.1vh;
+            margin-top: 1.7vh;
+            margin-left: 0.75vw;
+        }
     }
 }

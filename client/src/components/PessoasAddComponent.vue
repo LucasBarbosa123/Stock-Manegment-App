@@ -12,14 +12,14 @@
         
         <div class="acessos-container">
           <div>
-            <input type="checkbox" name="Stock" id="" checked>
+            <input type="checkbox" name="Stock" id="Stock" checked>
             <span class="check-marck"></span>
             <label for="Stock">Stock</label>
           </div>
           <div>
-            <input type="checkbox" name="Pessoas" id="">
+            <input type="checkbox" name="Pessoas" id="Pessoas">
             <span class="check-marck"></span>
-            <label for="Stock">Pessoas</label>
+            <label for="Pessoas">Pessoas</label>
           </div>
         </div>
 

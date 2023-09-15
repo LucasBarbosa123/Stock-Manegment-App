@@ -1,8 +1,11 @@
 <template>
 	<div class="content-container">
-		<div class="serch-container">
-		    <i class="fa-brands fa-searchengin fa-xl"></i>
-		    <input type="text" id="tableSearch" @keyup="tableSearcher">
+		<div class="search-container">
+			
+		    <div class="search-bar">
+                <i class="fa-brands fa-searchengin fa-xl"></i>
+                <input type="text" id="tableSearch" @keyup="tableSearcher">
+            </div>
 		</div>
 		<table id="table">
 			<tr class="table-head">
@@ -69,8 +72,6 @@
 </template>
 
 <script>
-import Warnings from '../Warnings'
-import GeneralService from '../GeneralService'
 import StockService from '../StockService'
 
 export default {
@@ -80,7 +81,7 @@ export default {
 			geral: [],
 			placas: [],
 			rolos: [],
-			roupa: []
+			roupas: []
 		}
 	},
 	async created(){
@@ -90,7 +91,7 @@ export default {
 		this.geral = stock.geral
 		this.placas = stock.placas
 		this.rolos = stock.rolos
-		this.roupa = stock.roupa
+		this.roupas = stock.roupas
 	},
 	methods: {
 		tableSearcher() {

@@ -66,7 +66,7 @@ router.get('/lst', async (req, res)=>{
             geral: geral,
             placas: await placasFormater(placas),
             rolos: await rolosFormater(rolos),
-            roupa: roupa
+            roupas: roupa
         }
     ])
 

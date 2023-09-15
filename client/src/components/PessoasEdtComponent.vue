@@ -1,10 +1,6 @@
 <template>
 <div class="content-container edt">
     <div class="list-container">
-        <div class="serch-container">
-            <i class="fa-brands fa-searchengin fa-xl"></i>
-            <input type="text" id="tableSearch" @keyup="tableSearcher">
-        </div>
         <table id="table">
             <tr class="table-head">
                 <th class="h-nome">Nome</th>
@@ -25,12 +21,12 @@
 
             <div class="acessos-container">
               <div>
-                <input type="checkbox" class="check-box" name="Stock" id="checkStock">
+                <input type="checkbox" class="check-box" name="Stock" id="Stock">
                 <span class="check-marck"></span>
                 <label for="Stock">Stock</label>
               </div>
               <div>
-                <input type="checkbox" class="check-box" name="Pessoas" id="checkPessoas">
+                <input type="checkbox" class="check-box" name="Pessoas" id="Pessoas">
                 <span class="check-marck"></span>
                 <label for="Stock">Pessoas</label>
               </div>
@@ -142,11 +138,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/scss/colors";
 @import "../assets/scss/table";
 
 table{
+    margin-top: 12vh !important;
+
     .table-head{        
 
         & > .h-nome{

@@ -1,8 +1,19 @@
 <template>
     <div class="content-container">
-        <div class="serch-container">
-            <i class="fa-brands fa-searchengin fa-xl"></i>
-            <input type="text" id="tableSearch" @keyup="tableSearcher">
+        <div class="search-container">
+            <div class="search-radio">
+                <input type="radio" id="radioNome" name="searchedColumn" value="0" @click="columnChooser" checked>
+                <label for="radioNome">Nome</label>
+                <input type="radio" id="radioEmail" name="searchedColumn" value="1" @click="columnChooser">
+                <label for="radioEmail">Email</label>
+                <input type="radio" id="radioAcessos" name="searchedColumn" value="2" @click="columnChooser">
+                <label for="radioAcessos">Acessos</label>
+            </div>
+
+            <div class="search-bar">
+                <i class="fa-brands fa-searchengin fa-xl"></i>
+                <input type="text" id="tableSearch" @keyup="tableSearcher">
+            </div>
         </div>
         <table id="table">
             <tr class="table-head">
@@ -94,7 +105,8 @@ export default {
             delForm: false,
             toDel: '',
             tryDelPerson,
-            sessionToken:''
+            sessionToken:'',
+            searchedColumn: 0
         }
     },
     async created(){
@@ -146,7 +158,7 @@ export default {
             table = document.getElementById("table")
             tr = table.getElementsByTagName("tr")
             for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0]
+                td = tr[i].getElementsByTagName("td")[this.searchedColumn]
                 if (td) {
                     if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = ""
@@ -162,6 +174,9 @@ export default {
             }else{
                 this.$router.push({name: 'pessoasedt', params: {id: this.sessionToken.user.user, edtId: id}})
             }
+        },
+        columnChooser(e){
+            this.searchedColumn = e.target.value
         }
     }
 }
@@ -174,7 +189,7 @@ export default {
 
 table{    
 
-    .table-head{        
+    .table-head{
 
         & > .h-nome{
             width: 12vw !important;
@@ -192,6 +207,10 @@ table{
             width: 10vw;
         }
     }
+}
+
+.search-container{
+    margin-left: 44vw !important;
 }
 
 </style>
