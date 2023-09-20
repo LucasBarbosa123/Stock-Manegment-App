@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Stock from '../views/Stock.vue'
 import StockLst from '../views/StockLst.vue'
+import StockAdd from '../views/StockAdd.vue'
 import Pessoas from '../views/Pessoas.vue'
 import PessoasLst from '../views/PessoasLst.vue'
 import PessoasAdd from '../views/PessoasAdd.vue'
@@ -53,6 +54,11 @@ const routes = [
     path: '/stock/lst/',
     name: 'stocklst',
     component: () => sessionChecker(StockLst)
+  },
+  {
+    path: '/stock/add/',
+    name: 'stockadd',
+    component: () => sessionChecker(StockAdd)
   },
   {
     path: '/pessoas/',

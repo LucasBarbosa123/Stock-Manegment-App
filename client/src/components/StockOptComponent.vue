@@ -22,7 +22,7 @@
                 <p>Adicionar Tipo de Stock</p>
             </div>
             <div class="opt-btt">
-                <button id="pessoasAdd">
+                <button id="pessoasAdd" @click="goTo('stockadd')">
                     <p>Adicionar</p>
                 </button>
             </div>

@@ -2,6 +2,17 @@
 	<div class="content-container">
 		<div class="search-container">
 			
+			<div class="search-options" id="choosenColumn" @click="openOptions">Nome</div>
+            <div class="search-drop-down" id="searchDropDown" v-if="searchDropDown">
+                <div id="nomeOpt" data-custom-value="0" @click="columnChooser">Nome</div>
+                <div id="tamanoOpt" data-custom-value="1" @click="columnChooser">Tamano</div>
+                <div id="corOpt" data-custom-value="2" @click="columnChooser">Cor</div>
+                <div id="quantidadeOpt" data-custom-value="3" @click="columnChooser">Quantidade</div>
+                <div id="tipoOpt" data-custom-value="4" @click="columnChooser">Tipo</div>
+                <div id="marcaOpt" data-custom-value="5" @click="columnChooser">Marca</div>
+                <div id="codProdOpt" data-custom-value="6" @click="columnChooser">Cód. Produto</div>
+            </div>
+
 		    <div class="search-bar">
                 <i class="fa-brands fa-searchengin fa-xl"></i>
                 <input type="text" id="tableSearch" @keyup="tableSearcher">
@@ -15,7 +26,7 @@
                 <th class="h-quantidade">Quantidade</th>
                 <th class="h-tipo">Tipo</th>
                 <th class="h-marca">Marca</th>
-				<th class="h-product-code">Cód. Proguto</th>
+				<th class="h-product-code">Cód. Produto</th>
             </tr>
 
 			<tr v-for="ferro in ferros" :key="ferro.Nome" class="table-body">
@@ -81,7 +92,9 @@ export default {
 			geral: [],
 			placas: [],
 			rolos: [],
-			roupas: []
+			roupas: [],
+			searchedColumn: 0,
+			searchDropDown: false
 		}
 	},
 	async created(){
@@ -101,7 +114,7 @@ export default {
             table = document.getElementById("table")
             tr = table.getElementsByTagName("tr")
             for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0]
+                td = tr[i].getElementsByTagName("td")[this.searchedColumn]
                 if (td) {
                     if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = ""
@@ -110,7 +123,19 @@ export default {
                     }
                 }       
             }
-        }
+        },
+		openOptions(){
+            this.searchDropDown = !this.searchDropDown
+
+        },
+		columnChooser(e){
+            let columnName = document.getElementById(e.target.id).textContent
+            document.getElementById('choosenColumn').textContent = columnName
+
+            this.searchedColumn = document.getElementById(e.target.id).getAttribute('data-custom-value')
+
+            this.searchDropDown = false
+        },
 	}
 }
 </script>
@@ -152,5 +177,13 @@ table{
             width: 10vw;
         }
     }
+}
+
+.search-container{
+	margin-left: 59.5vw;
+
+	& > .search-drop-down{
+		left: 61.95vw;
+	}
 }
 </style>

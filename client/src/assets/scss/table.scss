@@ -27,7 +27,7 @@ table{
                 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 20px;
                 border-radius: 1vh;
                 font-size: 1.1vw;
-                cursor: pointer;;
+                cursor: pointer;
 
                 & > i{
                     padding: 0.5vh;
@@ -58,10 +58,40 @@ table{
     margin-bottom: 2.5vh;
     display: flex;
 
-    & > .search-radio{
-        
-        & > label{
-            margin-right: 1vh;
+    & > .search-options{
+        width: 7.5vw;
+        height: 3.5vh;
+        margin-right: 1vw;
+        margin-top: 0.25vh;
+        border: solid 0.2vh $black;
+        border-radius: 0.5vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        cursor: pointer;
+    }
+
+    & > .search-drop-down{
+        display: none;
+        display: block;
+        position: absolute;
+        left: 46.4vw;
+        border: 0.2vh solid $black;
+        border-radius: 0.5vh;
+        top: 23.8vh;
+        background-color: $white;
+
+        & > div{
+            width: 7.5vw;
+            height: 3.5vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            cursor: pointer;
+
+            &:hover{
+                background-color: $grey;
+            }
         }
     }
     

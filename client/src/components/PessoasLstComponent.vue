@@ -1,13 +1,12 @@
 <template>
     <div class="content-container">
         <div class="search-container">
-            <div class="search-radio">
-                <input type="radio" id="radioNome" name="searchedColumn" value="0" @click="columnChooser" checked>
-                <label for="radioNome">Nome</label>
-                <input type="radio" id="radioEmail" name="searchedColumn" value="1" @click="columnChooser">
-                <label for="radioEmail">Email</label>
-                <input type="radio" id="radioAcessos" name="searchedColumn" value="2" @click="columnChooser">
-                <label for="radioAcessos">Acessos</label>
+
+            <div class="search-options" id="choosenColumn" @click="openOptions">Nome</div>
+            <div class="search-drop-down" id="searchDropDown" v-if="searchDropDown">
+                <div id="nomeOpt" data-custom-value="0" @click="columnChooser">Nome</div>
+                <div id="emailOpt" data-custom-value="1" @click="columnChooser">Email</div>
+                <div id="acessosOpt" data-custom-value="2" @click="columnChooser">Acessos</div>
             </div>
 
             <div class="search-bar">
@@ -106,7 +105,8 @@ export default {
             toDel: '',
             tryDelPerson,
             sessionToken:'',
-            searchedColumn: 0
+            searchedColumn: 0,
+            searchDropDown: false
         }
     },
     async created(){
@@ -170,13 +170,22 @@ export default {
         },
         toEdtPage(id){
             if(id == this.sessionToken.user.user){
-                //to my acount page
+                this.$router.push({name: 'accountedt'})
             }else{
                 this.$router.push({name: 'pessoasedt', params: {id: this.sessionToken.user.user, edtId: id}})
             }
         },
         columnChooser(e){
-            this.searchedColumn = e.target.value
+            let columnName = document.getElementById(e.target.id).textContent
+            document.getElementById('choosenColumn').textContent = columnName
+
+            this.searchedColumn = document.getElementById(e.target.id).getAttribute('data-custom-value')
+
+            this.searchDropDown = false
+        },
+        openOptions(){
+            this.searchDropDown = !this.searchDropDown
+
         }
     }
 }
