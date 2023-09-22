@@ -33,7 +33,19 @@
 				<td>{{ferro.Nome}}</td>
 				<td>{{ferro.Comprimento}}m</td>
 				<td class="empty"></td>
-				<td>{{ferro.Quantidade}}</td>
+				<td>
+					<div class="utility-btts">
+						<button>
+                    	    <i class="fa-solid fa-minus"></i>
+                    	</button>
+
+						 {{ferro.Quantidade}}
+
+						 <button>
+                    	    <i class="fa-solid fa-plus"></i>
+                    	</button>
+					</div> 
+				</td>
 				<td class="empty"></td>
 				<td class="empty"></td>
 				<td>{{ferro.ProductCode}}</td>
@@ -43,7 +55,19 @@
 				<td>{{ger.Nome}}</td>
 				<td class="empty"></td>
 				<td>{{ger.Cor}}</td>
-				<td>{{ger.Quantidade}}</td>
+				<td>
+					<div class="utility-btts">
+						<button>
+                    	    <i class="fa-solid fa-minus"></i>
+                    	</button>
+
+						 {{ger.Quantidade}}
+
+						 <button>
+                    	    <i class="fa-solid fa-plus"></i>
+                    	</button>
+					</div> 
+				</td>
 				<td class="empty"></td>
 				<td class="empty"></td>
 				<td>{{ger.ProductCode}}</td>
@@ -53,7 +77,19 @@
 				<td>{{placa.Nome}}</td>
 				<td>{{placa.Tamanho}}</td>
 				<td class="empty"></td>
-				<td>{{placa.Quantidade}}</td>
+				<td>
+					<div class="utility-btts">
+						<button>
+                    	    <i class="fa-solid fa-minus"></i>
+                    	</button>
+
+						 {{placa.Quantidade}}
+
+						 <button>
+                    	    <i class="fa-solid fa-plus"></i>
+                    	</button>
+					</div> 
+				</td>
 				<td class="empty"></td>
 				<td class="empty"></td>
 				<td>{{placa.ProductCode}}</td>
@@ -63,7 +99,19 @@
 				<td>{{rolo.Nome}}</td>
 				<td>{{rolo.Tamanho}}</td>
 				<td>{{rolo.Cor}}</td>
-				<td>{{rolo.Quantidade}}</td>
+				<td>
+					<div class="utility-btts">
+						<button>
+                    	    <i class="fa-solid fa-minus"></i>
+                    	</button>
+
+						 {{rolo.Quantidade}}
+
+						 <button>
+                    	    <i class="fa-solid fa-plus"></i>
+                    	</button>
+					</div> 
+				</td>
 				<td>{{rolo.Tipo}}</td>
 				<td class="empty"></td>
 				<td>{{rolo.ProductCode}}</td>
@@ -73,7 +121,19 @@
 				<td>{{roupa.Nome}}</td>
 				<td>{{roupa.Tamanho}}</td>
 				<td>{{roupa.Cor}}</td>
-				<td>{{roupa.Quantidade}}</td>
+				<td>
+					<div class="utility-btts">
+						<button>
+                    	    <i class="fa-solid fa-minus"></i>
+                    	</button>
+
+						 {{roupa.Quantidade}}
+
+						 <button>
+                    	    <i class="fa-solid fa-plus"></i>
+                    	</button>
+					</div> 
+				</td>
 				<td class="empty"></td>
 				<td>{{roupa.Marca}}</td>
 				<td>{{roupa.ProductCode}}</td>

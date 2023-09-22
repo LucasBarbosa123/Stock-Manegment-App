@@ -14,6 +14,11 @@ class LoginService {
         return Promise.reject(err)  
       }
     }
+
+    static async logout(){
+      const res = await axios.get(url+'/logout')
+      return res.data
+    }
 }
 
 export default LoginService

@@ -9,20 +9,36 @@
             </div>
         </div>
         <div class="header-icon">
-            <i class="fa-solid fa-circle-user fa-2x" @click="goTo('accountedt')"></i>
+            <i class="fa-solid fa-circle-user fa-2x" @click="openOptMenu"></i>
+        </div>
+
+        <div class="opt-menu-container" v-if="optMenu">
+            <div class="opt-menu-triangle"></div>
+            <div class="opt-menu">
+                <div id="myAccount" @click="goTo('accountedt')">
+                    <i name="account" class="fa-solid fa-user fa-lg"></i>
+                    <label for="account">Minha Conta</label>
+                </div>
+                <div id="logout" @click="logout">
+                    <i name="logout" class="fa-solid fa-right-from-bracket fa-xl"></i>
+                    <label for="logout">Logout</label>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import GeneralService from '../GeneralService'
+import LoginService from '../LoginService'
 
 export default {
     data(){
         return{
             userName: '',
             acessos: [],
-            error: ''
+            error: '',
+            optMenu: false
         }
     },
     async created(){
@@ -37,6 +53,15 @@ export default {
         goTo(page){
             let pageTo = page.toLowerCase()
             this.$router.push({name: pageTo})
+        },
+        openOptMenu(){
+            this.optMenu = !this.optMenu
+        },
+        async logout(){
+            let res = await LoginService.logout()
+            if(res == 'success'){
+                location.reload();
+            }
         }
     }
 }
@@ -93,6 +118,52 @@ export default {
             &:hover{
                 color: $negative-color;
             }
+        }
+    }
+
+    & > .opt-menu-container{
+        top: 7.5vh;
+        left: 90vw;
+        position: absolute;
+
+        & > .opt-menu{
+            height: 10vh;
+            width: 8vw;
+            background-color: white;
+            border: 1px solid $dark-grey;
+            border-radius: 0.5vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 1vh;
+            padding-right: 1vh;
+
+            & > div{
+                margin-top: 1.5vh;
+                color: $dark-grey;
+                cursor: pointer;
+
+                &:hover{
+                    color: $negative-color;
+                }
+
+                & > i{
+                    margin-right: 0.5vw;
+                }
+
+                & > label{
+                    cursor: pointer;
+                }
+            }
+        }
+
+        & > .opt-menu-triangle{
+            width: 0;
+            height: 0;
+            border-left: 1.3vh solid transparent;
+            border-right: 1.3vh solid transparent;
+            border-bottom: 1.3vh solid $dark-grey;
+            margin-left: 6.2vw;
         }
     }
 }

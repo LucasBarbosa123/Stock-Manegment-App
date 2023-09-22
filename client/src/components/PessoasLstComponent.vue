@@ -136,7 +136,6 @@ export default {
             let pass = document.getElementById('delPass').value
 
             if(this.toDel == ''){
-                console.log('bug stoped')
                 
             }else if(pass != '' ){
                 this.tryDelPerson(this.toDel ,this.sessionToken.user.user ,pass)

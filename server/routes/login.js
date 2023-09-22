@@ -28,6 +28,8 @@ router.get('/tryLogin/:nome/:pass', async (req, res)=>{
           token: token
         }
 
+        req.session.cookie.maxAge = expiresAt
+
         req.session.save(err => {
           if(err){
             console.log(err);
@@ -42,6 +44,11 @@ router.get('/tryLogin/:nome/:pass', async (req, res)=>{
     }else{
       res.send(userId)
     }
+})
+
+router.get('/logout', async (req, res) => {
+  req.session.destroy()
+  res.send('success')
 })
 
 module.exports = router
